@@ -11,9 +11,9 @@ export const data = gql`
 export const App: React.FC = () => (
     <Query query={data}>
       {({ loading, data }: any) => {
-        console.log(data);
+        if (loading) return <div>...</div>
         return (
-          <div>App</div>
+          <div>{data.helloWorld}</div>
         )
       }
       }
