@@ -4,7 +4,7 @@
   "description": "NodeJS Apollo server with Typescript, express and GraphQL",
   "main": "src/server.js",
   "scripts": {
-    "start": "node 'dist/server.js'",
+    "start": "nodemon 'dist/server.js'",
     "build": "rm -rf dist && tsc -p . && ncp src/schema dist/schema",
     "start:dev": "npm run build:dev",
     "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql"
