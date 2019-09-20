@@ -1,7 +1,9 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+
 import {Grid} from './grid/Grid';
+import {Header} from './header/header';
 
 export const data = gql`
   query data {
@@ -10,6 +12,8 @@ export const data = gql`
 `;
 
 export const App: React.FC = () => (
+  <div>
+    <Header />
     <Query query={data}>
       {({ loading, data }: any) => {
         if (loading) return <div>...</div>
@@ -22,4 +26,5 @@ export const App: React.FC = () => (
       }
       }
     </Query>
+  </div>
 );
