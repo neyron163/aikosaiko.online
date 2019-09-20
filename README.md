@@ -1,4 +1,4 @@
-# aikosaiko.online
+# aikoanime.online aikoanime.tv aikoanime.com
 
 ## How to run the docker container into a backend folder
 
