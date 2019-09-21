@@ -1,3 +1,11 @@
+type MainType {
+  albumId: Int
+  id: Int
+  title: String
+  url: String
+  thumbnailUrl: String
+}
+
 type Query {
-  helloWorld: String!
+  content: [MainType!]!
 }
