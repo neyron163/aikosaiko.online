@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './components/styleguide/reset.css';
 import {App} from './components/app';
 import { ApolloProvider } from 'react-apollo';
 import client from './config/apollo';

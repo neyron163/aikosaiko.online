@@ -1,28 +1,33 @@
-import React from 'react';
-import bg from './images/background.jpg';
+import React from "react";
 
-import { BrowserRouter as Router } from "react-router-dom";
-import {LinkButton} from '../linkButton/linkButton';
-import {nav} from './nav';
+import white from "./images/white.jpg";
+import dark from "./images/dark.jpg";
+import { LinkButton } from "../linkButton/linkButton";
+import { nav } from "./nav";
 
-import s from './header.module.scss';
+import s from "./header.module.scss";
 
+interface PropsType {
+  night?: boolean;
+}
 interface NavType {
-    text: string;
-    path: string;
+  text: string;
+  path: string;
 }
 
-export const Header = () => (
-    <header className={s.header}>
-        <img className={s.img} src={bg} alt="header" />
-        <Router>
-            <nav>
-                <ul>
-                    {nav.map(({text, path}: any) => (
-                        <li><LinkButton path={path}>{text}</LinkButton></li>
-                    ))}
-                </ul>
-            </nav>
-        </Router>
-    </header>
+export const Header = ({ night = false }: PropsType) => (
+  <header className={s.header}>
+    <img className={s.img} src={night ? dark : white} alt="header" />
+    <nav className={s.menu}>
+      <div className={s.grid}>
+        <ul className={s.list}>
+          {nav.map(({ text, path }: NavType) => (
+            <li>
+              <LinkButton path={path}>{text}</LinkButton>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  </header>
 );
