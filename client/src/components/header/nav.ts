@@ -10,5 +10,5 @@ export const nav = [
     {
         text: 'Пожертвование',
         path: '/charity',
-    }
+    },
 ];
