@@ -3,13 +3,13 @@ name: Node CI
 on: [push]
 
 jobs:
-  build:
+  Install:
 
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: 12.x
 
     steps:
     - uses: actions/checkout@v1
@@ -19,8 +19,18 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install, build, and test
       run: |
-        rm -rf node_modules package-lock.json
-        yarn install
-        yarn eslint
+        yarn
       env:
         CI: true
+
+  Lint:
+    needs: Install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v1
+        with:
+          node-version: 12.x
+      - name: Check types and lint
+      run: |
+        yarn tsc --noEmit
+        yarn eslint
