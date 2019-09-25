@@ -12,7 +12,6 @@ interface PropsType {
 }
 interface NavType {
     text: string;
-    path: string;
 }
 
 export const Header = ({night = false}: PropsType) => (
