@@ -5,4 +5,6 @@ export interface PropsType {
     path: string;
 }
 
-export const LinkButton: React.FC<PropsType> = ({children, path = '/'}) => <Link to={path}>{children}</Link>;
+export const LinkButton: React.FC<PropsType> = ({children, path = '/'}) => (
+    <Link to={path}>{children}</Link>
+);
