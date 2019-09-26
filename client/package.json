@@ -81,7 +81,8 @@
     "test": "node scripts/test.js",
     "eslint": "eslint src/ --cache --color --ext .tsx,.ts,.jsx,.js",
     "eslint-fix": "eslint src/ --color --ext .tsx,.ts,.jsx,.js --fix",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "finish": "yarn tsc --noEmit && yarn eslint && yarn coverage"
   },
   "eslintConfig": {
     "extends": "react-app"

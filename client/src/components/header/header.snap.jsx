@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import {Header} from './header';
 
-jest.mock('../linkButton/linkButton', () => ({ LinkButton: 'LinkButton' }));
+jest.mock('../linkButton/linkButton', () => ({LinkButton: 'LinkButton'}));
 
 describe('<Header />', () => {
     it('should render correctly', () => {
