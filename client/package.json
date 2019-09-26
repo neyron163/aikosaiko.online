@@ -115,7 +115,10 @@
       "<rootDir>/src/**/snap/**/*.{js,jsx,ts,tsx}",
       "<rootDir>/src/**/*.{snap,test}.{js,jsx,ts,tsx}"
     ],
-    "coveragePathIgnorePatterns": ["/src/serviceWorker.ts", "/src/react-app-env.d.ts"],
+    "coveragePathIgnorePatterns": [
+      "/src/serviceWorker.ts",
+      "/src/react-app-env.d.ts"
+    ],
     "testEnvironment": "jest-environment-jsdom-fourteen",
     "transform": {
       "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
