@@ -17,20 +17,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
-      run: |
-        yarn
-      env:
-        CI: true
-
-  Lint:
-    needs: Install
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v1
-        with:
-          node-version: 12.x
-      - name: Check types and lint
+    - name: yarn install and yarn finish
       run: |
         yarn tsc --noEmit
-        yarn eslint
+        yarn finish
+      env:
+        CI: true
