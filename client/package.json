@@ -117,7 +117,8 @@
     ],
     "coveragePathIgnorePatterns": [
       "/src/serviceWorker.ts",
-      "/src/react-app-env.d.ts"
+      "/src/react-app-env.d.ts",
+      "/src/config/apollo.ts"
     ],
     "testEnvironment": "jest-environment-jsdom-fourteen",
     "transform": {
