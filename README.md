@@ -8,7 +8,7 @@ $ yarn
 $ yarn start
 ```
 
-before you push your code in github make sure that you passed all checks.
+before you push your code on github make sure that you passed all checks.
 
 ```sh
 $ yarn finish
