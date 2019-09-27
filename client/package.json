@@ -122,6 +122,14 @@
       "/src/react-app-env.d.ts",
       "/src/config/apollo.ts"
     ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 95,
+        "functions": 95,
+        "lines": 95,
+        "statements": -10
+      }
+    },
     "testEnvironment": "jest-environment-jsdom-fourteen",
     "transform": {
       "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
