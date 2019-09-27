@@ -10,7 +10,7 @@ on:
 
 jobs:
 
-  Frontend Lint:
+  Frontend_Lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -19,7 +19,7 @@ jobs:
           node-version: 12
       - run: cd client && yarn && yarn eslint && yarn tsc
 
-  Frontend Coverage:
+  Frontend_Coverage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -28,7 +28,7 @@ jobs:
           node-version: 12
       - run: cd client && yarn && yarn coverage
 
-  Backend Lint:
+  Backend_Lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
