@@ -16,8 +16,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: cd client
-      - run: yarn finish
+      - run: cd client && yarn && yarn finish
 
   publish-npm:
     needs: build
