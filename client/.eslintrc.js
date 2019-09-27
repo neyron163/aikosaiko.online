@@ -31,7 +31,7 @@ module.exports =  {
         "react-hooks/exhaustive-deps": 1,
         // Allowed
         "no-console": ["error", { allow: ["warn", "error"] }],
-        "@typescript-eslint/no-explicit-any": 1,
+        "@typescript-eslint/no-explicit-any": ["error"],
         "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/no-non-null-assertion": 0,
         "@typescript-eslint/explicit-function-return-type": 0,
@@ -43,6 +43,14 @@ module.exports =  {
         "react/prop-types": 0,
         "react/no-unescaped-entities": 0,
         "react/display-name": 0,
+        "require-jsdoc": [2, {
+          "require": {
+              "FunctionDeclaration": true,
+              "MethodDefinition": true,
+              "ClassDeclaration": true,
+              "ArrowFunctionExpression": true,
+          }
+      }],
         /**
          *
          *  Temporary disabled; to be removed gradually.

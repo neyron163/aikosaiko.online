@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LinkButton /> should render correctly 1`] = `
+<Link
+  to="/"
+/>
+`;
+
+exports[`<LinkButton /> should render correctly if children exist 1`] = `
+<Link
+  to="/"
+>
+   children 
+</Link>
+`;

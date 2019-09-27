@@ -14,7 +14,11 @@ interface NavType {
     text: string;
 }
 
-export const Header = ({night = false}: PropsType) => (
+/**
+ * Header component
+ * @param {Header} - props
+ */
+export const Header: React.FC<PropsType> = ({night = false}) => (
     <header className={s.header}>
         <img className={s.img} src={night ? dark : white} alt="header" />
         <nav className={s.menu}>
