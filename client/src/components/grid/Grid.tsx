@@ -7,19 +7,19 @@ import emptySvg from "../assets/img/empty.svg";
 import { ItemType } from "./gridTypes";
 
 export const data = gql`
-  query data {
-    content {
-      albumId
-      id
-      title
-      url
-      thumbnailUrl
+    query data {
+        content {
+            albumId
+            id
+            title
+            url
+            thumbnailUrl
+        }
     }
-  }
 `;
 
 export function Grid() {
-  const strFormatt = (s: string): string => s.slice(0, s.length / 2);
+    const strFormatt = (s: string): string => s.slice(0, s.length / 2);
 
   return (
     <Query query={data}>

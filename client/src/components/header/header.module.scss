@@ -1,9 +1,44 @@
+@import '../styleguide/variables.scss';
+
 :local {
     .header {
-        height: 300px;
+        height: 250px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
 
     .img {
-        height: 250px;
+        height: 350px;
+        position: absolute;
+        width: 100%;
+    }
+
+    .menu {
+        position: relative;
+        background: var(--color-mine-shaft);
+        height: 50px;
+    }
+
+    .list {
+        display: flex;
+
+        li {
+            margin-right: 10px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        a {
+            color: var(--color-white);
+        }
+    }
+
+    .grid {
+        max-width: 1220px;
+        margin: 0 auto;
     }
 }

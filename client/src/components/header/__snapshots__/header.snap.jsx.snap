@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should render correctly 1`] = `
+<header
+  className="header"
+>
+  <img
+    alt="header"
+    className="img"
+    src="white.jpg"
+  />
+  <nav
+    className="menu"
+  >
+    <div
+      className="grid"
+    >
+      <ul
+        className="list"
+      >
+        <li>
+          <LinkButton
+            path="/"
+          >
+            Главная
+          </LinkButton>
+        </li>
+        <li>
+          <LinkButton
+            path="/news"
+          >
+            Новости
+          </LinkButton>
+        </li>
+        <li>
+          <LinkButton
+            path="/charity"
+          >
+            Пожертвование
+          </LinkButton>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+`;
+
+exports[`<Header /> should render correctly if night true 1`] = `
+<header
+  className="header"
+>
+  <img
+    alt="header"
+    className="img"
+    src="dark.jpg"
+  />
+  <nav
+    className="menu"
+  >
+    <div
+      className="grid"
+    >
+      <ul
+        className="list"
+      >
+        <li>
+          <LinkButton
+            path="/"
+          >
+            Главная
+          </LinkButton>
+        </li>
+        <li>
+          <LinkButton
+            path="/news"
+          >
+            Новости
+          </LinkButton>
+        </li>
+        <li>
+          <LinkButton
+            path="/charity"
+          >
+            Пожертвование
+          </LinkButton>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+`;

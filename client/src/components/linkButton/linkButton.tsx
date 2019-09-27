@@ -1,13 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 export interface PropsType {
-    children: string;
     path: string;
 }
 
-export const LinkButton = ({children, path = '/'}: PropsType) => (
-    <Link to={path}>
-        {children}
-    </Link>
+/**
+ * The link button component for domestic move
+ * @param {PropsType} - props
+ */
+export const LinkButton: React.FC<PropsType> = ({children, path = '/'}) => (
+    <Link to={path}>{children}</Link>
 );

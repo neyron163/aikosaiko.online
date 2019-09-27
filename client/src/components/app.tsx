@@ -1,13 +1,15 @@
-import React from "react";
-import { Query } from "react-apollo";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-import { Grid } from "./grid/Grid";
-import { Header } from "./header/header";
+import {Grid} from './grid/Grid';
+import {Header} from './header/header';
 
+/**
+ * The main App component
+ */
 export const App: React.FC = () => (
-  <Router>
-    {/* <Header /> */}
-    <Route exact path="/" component={() => <Grid />} />
-  </Router>
+    <Router>
+        <Header />
+        <Route exact path="/" component={() => <Grid />} />
+    </Router>
 );
