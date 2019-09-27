@@ -1,3 +1,3 @@
 export interface Context {
-  jwt?: String;
+  jwt?: string;
 }

@@ -1,6 +1,6 @@
 import { GraphQLResolveInfo } from "graphql";
-import { Context } from "./models";
 import { IResolvers } from "graphql-tools";
+import { Context } from "./models";
 
 const resolverMap: IResolvers = {
   Query: {
