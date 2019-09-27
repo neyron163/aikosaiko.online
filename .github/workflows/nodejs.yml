@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: cd client && yarn && yarn eslint && yarn tsc
+      - run: cd client && yarn && yarn eslint && yarn tsc && yarn stylelint
 
   Frontend_Coverage:
     runs-on: ubuntu-latest
