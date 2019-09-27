@@ -1,9 +1,9 @@
-import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import depthLimit from 'graphql-depth-limit';
-import { createServer } from 'http';
 import compression from 'compression';
 import cors from 'cors';
+import express from 'express';
+import depthLimit from 'graphql-depth-limit';
+import { createServer } from 'http';
 import schema from './schema';
 
 const app = express();
@@ -19,5 +19,6 @@ const httpServer = createServer(app);
 
 httpServer.listen(
   { port: 4000 },
+  // tslint:disable-next-line:no-console
   (): void => console.log(`\n🚀      GraphQL is now running on http://localhost:4000/graphql`)
 );
