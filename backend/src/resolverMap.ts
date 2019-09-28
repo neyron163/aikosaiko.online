@@ -2,6 +2,7 @@ import { GraphQLResolveInfo } from "graphql";
 import { IResolvers } from "graphql-tools";
 import { Context } from "./models";
 
+
 const resolverMap: IResolvers = {
   Query: {
     content(_: void, args: void, ctx: Context, info: GraphQLResolveInfo) {

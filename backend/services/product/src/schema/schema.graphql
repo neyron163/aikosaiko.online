@@ -1,0 +1,9 @@
+type productsType {
+  id: Int
+  name: String
+  img: String
+}
+
+type Query {
+  products: [productsType!]!
+}
