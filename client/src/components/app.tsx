@@ -11,5 +11,6 @@ export const App: React.FC = () => (
     <Router>
         <Header />
         <Route exact path="/" component={() => <Grid />} />
+        <Route component={() => <div>404</div>} />
     </Router>
 );
