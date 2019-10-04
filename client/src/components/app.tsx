@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import {Grid} from './grid/Grid';
+import {Products} from './products/products';
 import {Header} from './header/header';
 
 /**
@@ -11,7 +11,7 @@ export const App: React.FC = () => (
     <Router>
         <Header />
         <Switch>
-            <Route exact path="/" component={() => <Grid />} />
+            <Route exact path="/" component={() => <Products />} />
             <Route component={() => <div>404 - page not found</div>} />
         </Switch>
     </Router>

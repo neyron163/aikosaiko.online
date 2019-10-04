@@ -3,7 +3,7 @@ import React from 'react';
 import white from './images/white.jpg';
 import dark from './images/dark.jpg';
 import {LinkButton} from '../linkButton/linkButton';
-import {nav} from './nav';
+import {menu} from './nav';
 
 import s from './header.module.scss';
 
@@ -25,7 +25,7 @@ export const Header: React.FC<PropsType> = ({night = false}) => (
         <nav className={s.menu}>
             <div className={s.grid}>
                 <ul className={s.list}>
-                    {nav.map(({text, path}: NavType) => (
+                    {menu.map(({text, path}: NavType) => (
                         <li key={text}>
                             <LinkButton path={path}>{text}</LinkButton>
                         </li>

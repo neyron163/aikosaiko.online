@@ -1,0 +1,106 @@
+:local {
+    img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+    
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 1440px;
+        padding: 50px 0;
+        font-family: "Roboto", sans-serif;
+    }
+    
+    .leftBar {
+        flex: 0 1 300px;
+        height: 400px;
+        margin: 0 10px;
+        background: #e2e2e2; // look at file with vars
+        border-radius: 5px;
+        box-shadow: 1px 0 10px 0 rgb(71, 61, 61);
+    }
+    
+    .itemBox {
+        display: flex;
+        flex-flow: row wrap;
+        flex: 0 1 960px;
+        margin: 0 auto;
+    }
+    
+    .item {
+        flex: 0 1 calc(32.33% - 20px);
+        box-sizing: border-box;
+        margin: 0 10px 10px;
+        background: #e2e2e2;
+        border-radius: 5px;
+        box-shadow: 1px 0 10px 0 rgb(71, 61, 61);
+        background-color: #242525;
+    }
+    
+    .itemFigure {
+        position: relative;
+        display: flex;
+        flex-flow: row wrap;
+        height: 100%;
+        min-width: 280px;
+    }
+    
+    .itemDescription {
+        border-radius: 0 0 5px 5px;
+        width: 100%;
+        color: white;
+        padding: 10px;
+        box-sizing: border-box;
+        padding: 10px 20px;
+    }
+    
+    .itemTopLine {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        padding-top: 10px;
+    }
+    
+    .itemNum {
+        background: #4b8257;
+        flex: 1 1 40px;
+        border-radius: calc(35% + 2px);
+        padding: 0 3px;
+        text-align: center;
+    }
+    
+    .itemName {
+        padding: 0 10px;
+        flex: 2 1 50%;
+        text-transform: uppercase;
+    }
+    
+    .views {
+        flex: 1 0 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    .itemFooter {
+        flex: 1 0 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .svgBox {
+        img {
+            width: 30px;
+        }
+    }
+    
+    .rating {
+        min-width: 20px;
+        padding: 2px 10px;
+        background-color: #c6a852;
+        border-radius: 4px;
+    }
+    
+}

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 
 export interface PropsType {
     path: string;
+    children: string;
 }
 
 /**

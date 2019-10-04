@@ -1,4 +1,4 @@
-export const nav = [
+export const menu = [
     {
         text: 'Главная',
         path: '/',
