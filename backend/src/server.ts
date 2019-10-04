@@ -1,24 +1,31 @@
-import { ApolloServer } from 'apollo-server-express';
-import compression from 'compression';
-import cors from 'cors';
 import express from 'express';
-import depthLimit from 'graphql-depth-limit';
-import { createServer } from 'http';
-import schema from './schema';
+import {ApolloServer} from 'apollo-server-express';
+import {mergeSchemas} from 'graphql-tools';
+import { getIntrospectSchema } from './introspection';
+import query from 'qs-middleware';
 
-const app = express();
-const server = new ApolloServer({
-  schema,
-  validationRules: [depthLimit(7)],
-});
-app.use('*', cors());
-app.use(compression());
-server.applyMiddleware({ app, path: '/graphql' });
+//our graphql endpoints
+const endpoints = [
+	'http://localhost:4001/graphql',
+];
 
-const httpServer = createServer(app);
+(async function () {
+	try {
+		//promise.all to grab all remote schemas at the same time, we do not care what order they come back but rather just when they finish
+    const allSchemas = await Promise.all(endpoints.map(ep => getIntrospectSchema(ep)));
 
-httpServer.listen(
-  { port: 4000 },
-  // tslint:disable-next-line:no-console
-  (): void => console.log(`\n🚀      GraphQL is now running on http://localhost:4000/graphql`)
-);
+    const server = new ApolloServer({ schema: mergeSchemas({ schemas: allSchemas }) });
+    //create function for /graphql endpoint and merge all the schemas
+    const app = express();
+    const path = '/graphql';
+    
+    app.use(query());
+    server.applyMiddleware({ app, path });
+    
+    app.listen({ port: 4000 }, () =>
+      console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+    );
+	} catch (error) {
+		console.log('ERROR: Failed to grab introspection queries', error);
+	}
+})();
