@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@types/pg": "^7.11.2",
+    "@types/sequelize": "^4.28.5",
     "apollo-server-express": "^2.9.3",
     "chai": "^4.2.0",
     "compression": "^1.7.4",
