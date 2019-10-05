@@ -1,5 +1,11 @@
+input create {
+  name: String
+  img: String
+  age: Int
+}
+
 type productsType {
-  id: Int
+  id: ID!
   name: String
   img: String
   age: Int
@@ -7,4 +13,8 @@ type productsType {
 
 type Query {
   products: [productsType!]!
+}
+
+type Mutation {
+  createProduct(input: create): productsType
 }

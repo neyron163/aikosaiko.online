@@ -9,6 +9,13 @@ const resolverMap: IResolvers = {
     products(_: void, args: void, ctx: Context, info: GraphQLResolveInfo) {
       return content.findAll();
     }
+  },
+  Mutation: {
+    createProduct(root, {
+      input
+  }) {
+      return content.create(input);
+  }
   }
 };
 
