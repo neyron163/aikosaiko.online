@@ -11,7 +11,7 @@ export const sequelize = new Sequelize("mydb", "andrew", "260062", {
   },
   define: {
     timestamps: false
-  },
+  }
 });
 
 sequelize
@@ -33,5 +33,5 @@ export const content = sequelize.define("products", {
   age: {
     type: DataTypes.INTEGER
   },
-  img: DataTypes.STRING,
+  img: DataTypes.STRING
 });

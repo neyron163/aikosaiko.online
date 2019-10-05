@@ -2,6 +2,7 @@ type productsType {
   id: Int
   name: String
   img: String
+  age: Int
 }
 
 type Query {

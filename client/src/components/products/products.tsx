@@ -1,6 +1,7 @@
 import React from 'react';
-import {useQuery} from '@apollo/react-hooks';
+// import {useQuery} from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import {graphql} from 'react-apollo';
 
 import s from './products.module.scss';
 
@@ -20,13 +21,19 @@ interface ProductsType {
     img: string;
 }
 
+interface PropsType {
+    data: {
+        products: ProductsType[];
+        loading: boolean;
+    };
+}
+
 /**
  * Products component
  */
-export const Products = () => {
-    const {loading, data} = useQuery(GET_PRODUCTS);
+export const Products: React.FC<PropsType> = ({data}) => {
+    const {products, loading} = data;
     if (loading) return null;
-    const {products} = data;
     return (
         <div className={s.wrapper}>
             <div className={s.itemBox}>
@@ -53,3 +60,5 @@ export const Products = () => {
         </div>
     );
 };
+// @ts-ignore
+export const ProductsQuery = graphql(GET_PRODUCTS)(Products);

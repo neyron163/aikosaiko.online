@@ -1,38 +1,34 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {MockedProvider} from '@apollo/react-testing';
-import wait from 'waait';
+import {Products} from './products';
 
-import {Products, GET_PRODUCTS} from './products';
+let props;
 
-jest.mock('react-router-dom', () => ({Link: 'Link'}));
-
-const mocks = [
-    {
-        request: {
-            query: GET_PRODUCTS,
+beforeEach(() => {
+    props = {
+        data: {
+            products: [
+                {
+                    id: 1,
+                    name: 'name',
+                    img: 'img',
+                }
+            ]
         },
-        result: {
-            data: {
-                products: {id: '1', name: 'title', img: 'img'},
-            },
-        },
-    },
-];
+        loading: false,
+    }
+})
 
 describe('<Products />', () => {
-    it('should render correctly', async () => {
-        const {act} = renderer;
-        await act(async () => {
-            const tree = renderer.create(
-                <MockedProvider mocks={mocks} addTypename={false}>
-                    <Products />
-                </MockedProvider>,
-            );
-            await wait(0);
+    it('should render correctly', () => {
+        const tree = renderer.create(<Products {...props} />);
+        expect(tree.toJSON()).toMatchSnapshot();
+    });
 
-            expect(tree.toJSON()).toMatchSnapshot();
-        });
+    it('should render correctly if loading true', () => {
+        props.data.loading = true;
+        const tree = renderer.create(<Products {...props} />);
+        expect(tree.toJSON()).toMatchSnapshot();
     });
 });
