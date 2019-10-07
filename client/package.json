@@ -13,6 +13,7 @@
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "@types/react-router-dom": "^5.1.0",
+    "@types/react-test-renderer": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "1.13.0",
     "@typescript-eslint/parser": "1.13.0",
     "apollo-boost": "^0.4.4",
@@ -145,7 +146,12 @@
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
       "^.+\\.module\\.(css|sass|scss)$"
     ],
-    "modulePaths": [],
+    "modulePaths": [
+      "<rootDir>/src/"
+    ],
+    "moduleDirectories": [
+      "<rootDir>/node_modules"
+    ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"

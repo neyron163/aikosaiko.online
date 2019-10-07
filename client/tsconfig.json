@@ -9,7 +9,6 @@
       "es2016",
       "es2017",
     ],
-    "baseUrl": "./src",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -24,6 +23,10 @@
     "noEmit": true,
     "jsx": "react",
     "alwaysStrict": true,
+    "baseUrl": "./src",
+    "paths": {
+      "src/*": ["./src"],
+    }
   },
   "include": [
     "src"
