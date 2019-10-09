@@ -2,7 +2,21 @@
 
 exports[`<App /> should render correctly 1`] = `
 Array [
-  <Header />,
+  <HeaderWithRouter />,
+  <ProductsQuery />,
+]
+`;
+
+exports[`<App /> should render correctly if path admin 1`] = `
+Array [
+  <HeaderWithRouter />,
+  <ProductsQuery />,
+]
+`;
+
+exports[`<App /> should render correctly if path random 1`] = `
+Array [
+  <HeaderWithRouter />,
   <ProductsQuery />,
 ]
 `;

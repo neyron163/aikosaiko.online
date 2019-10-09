@@ -5,3 +5,5 @@ exports[`<PageNotFound /> should render correctly 1`] = `
   404 - page not found
 </div>
 `;
+
+exports[`<PageNotFound /> should render correctly if pathname = admin 1`] = `null`;

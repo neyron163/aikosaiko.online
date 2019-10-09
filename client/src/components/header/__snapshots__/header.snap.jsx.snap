@@ -39,6 +39,13 @@ exports[`<Header /> should render correctly 1`] = `
             Пожертвование
           </LinkButton>
         </li>
+        <li>
+          <LinkButton
+            path="/admin"
+          >
+            admin
+          </LinkButton>
+        </li>
       </ul>
     </div>
   </nav>
@@ -84,8 +91,17 @@ exports[`<Header /> should render correctly if night true 1`] = `
             Пожертвование
           </LinkButton>
         </li>
+        <li>
+          <LinkButton
+            path="/admin"
+          >
+            admin
+          </LinkButton>
+        </li>
       </ul>
     </div>
   </nav>
 </header>
 `;
+
+exports[`<Header /> should render correctly if pathname = admin 1`] = `null`;

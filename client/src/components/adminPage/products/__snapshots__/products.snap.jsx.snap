@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Products /> should render correctly 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <TextField
+    className="makeStyles-textField-2"
+    id="standard-name"
+    label="Name"
+    margin="normal"
+    onChange={[Function]}
+    value=""
+  />
+  <TextField
+    className="makeStyles-textField-2"
+    id="standard-name"
+    label="Age"
+    margin="normal"
+    onChange={[Function]}
+    value=""
+  />
+  <TextField
+    className="makeStyles-textField-2"
+    id="standard-name"
+    label="Img"
+    margin="normal"
+    onChange={[Function]}
+    value=""
+  />
+  <button
+    type="submit"
+  >
+    send
+  </button>
+</form>
+`;
