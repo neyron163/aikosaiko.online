@@ -7,12 +7,15 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        position: relative;
     }
 
     .img {
-        height: 350px;
         position: absolute;
-        width: 100%;
+        min-width: 105%;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
     }
 
     .menu {
@@ -40,5 +43,8 @@
     .grid {
         max-width: 1220px;
         margin: 0 auto;
+        display: flex;
+        align-items: center;
+        height: 100%;
     }
 }

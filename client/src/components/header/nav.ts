@@ -11,4 +11,8 @@ export const menu = [
         text: 'Пожертвование',
         path: '/charity',
     },
+    {
+        text: 'admin',
+        path: '/admin',
+    },
 ];

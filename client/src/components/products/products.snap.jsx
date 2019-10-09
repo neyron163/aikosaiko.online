@@ -13,12 +13,12 @@ beforeEach(() => {
                     id: 1,
                     name: 'name',
                     img: 'img',
-                }
-            ]
+                },
+            ],
         },
         loading: false,
-    }
-})
+    };
+});
 
 describe('<Products />', () => {
     it('should render correctly', () => {

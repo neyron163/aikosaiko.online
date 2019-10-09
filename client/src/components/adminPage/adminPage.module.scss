@@ -1,0 +1,8 @@
+@import '../styleguide/variables.scss';
+
+:local {
+    .container {
+        display: flex;
+        background-color: var(--color-alabaster);
+    }
+}

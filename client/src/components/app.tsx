@@ -2,22 +2,26 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import {ProductsQuery} from './products/products';
-import {Header} from './header/header';
-import {PageNotFound} from './pageNotFound/pageNotFound';
+import {HeaderWithRouter} from './header/header';
+import {PageNotFoundWithRouter} from './pageNotFound/pageNotFound';
+import {AdminPage} from './adminPage/adminPage';
 
 /**
  * The main App component
  */
 export const App: React.FC = () => (
     <Router>
-        <Header />
+        <HeaderWithRouter />
         <Switch>
             <Route exact path="/">
                 <ProductsQuery />
             </Route>
             <Route>
-                <PageNotFound />
+                <PageNotFoundWithRouter />
             </Route>
         </Switch>
+        <Route exact path="/admin">
+            <AdminPage />
+        </Route>
     </Router>
 );

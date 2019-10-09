@@ -1,13 +1,13 @@
 module.exports =  {
-    parser:  '@typescript-eslint/parser',  // Specifies the ESLint parser
+    parser:  '@typescript-eslint/parser',
     extends:  [
-        'plugin:@typescript-eslint/recommended',  // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+        'plugin:@typescript-eslint/recommended', 
         'prettier',
         "prettier/react",
         "prettier/standard",
-        'prettier/@typescript-eslint',  // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
+        'prettier/@typescript-eslint',
         "plugin:react/recommended",
-        'plugin:prettier/recommended',  // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+        'plugin:prettier/recommended',
       ],
     parserOptions:  {
     ecmaVersion:  2018,  // Allows for the parsing of modern ECMAScript features
@@ -24,14 +24,11 @@ module.exports =  {
             argsIgnorePattern: "^_"
           }
         ],
-        // Errors
-        "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-        "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
-        // Warnings
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
         "react-hooks/exhaustive-deps": 1,
-        // Allowed
         "no-console": ["error", { allow: ["warn", "error"] }],
-        "@typescript-eslint/no-explicit-any": ["error"],
+        "@typescript-eslint/no-explicit-any": ["warn"],
         "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/no-non-null-assertion": 0,
         "@typescript-eslint/explicit-function-return-type": 0,
@@ -51,16 +48,11 @@ module.exports =  {
               "ArrowFunctionExpression": true,
           }
       }],
-        /**
-         *
-         *  Temporary disabled; to be removed gradually.
-         *
-         **/
         "react/no-find-dom-node": 0
       },
     settings:  {
       react:  {
-        version:  'detect',  // Tells eslint-plugin-react to automatically detect the version of React to use
+        version:  'detect',
       },
     },
     plugins: [
