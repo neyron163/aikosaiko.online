@@ -1,5 +1,5 @@
+// it should be import instead require
 const Sequelize = require("sequelize");
-import DataTypes from "sequelize";
 
 export const sequelize = new Sequelize("mydb", "andrew", "260062", {
   dialect: "postgres",
@@ -23,15 +23,31 @@ sequelize
     console.error("Unable to connect to the database:", err); // eslint-disable-line no-console
   });
 
-export const content = sequelize.define("products", {
+const TABLE = {
   id: {
-    type: DataTypes.INTEGER,
+    type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  name: DataTypes.STRING,
+  name: Sequelize.STRING,
   age: {
-    type: DataTypes.INTEGER
+    type: Sequelize.INTEGER
   },
-  img: DataTypes.STRING
-});
+  img: Sequelize.STRING,
+  place: Sequelize.INTEGER,
+  rating: Sequelize.STRING,
+  votes: Sequelize.STRING,
+  views: Sequelize.INTEGER,
+  genre: Sequelize.STRING,
+  type: Sequelize.STRING,
+  year: Sequelize.INTEGER,
+  status: Sequelize.STRING,
+  studio: Sequelize.STRING,
+  series: Sequelize.INTEGER
+};
+
+// creating table
+sequelize.queryInterface.createTable("products", TABLE);
+
+// define table products
+export const content = sequelize.define("products", TABLE);

@@ -2,6 +2,16 @@ input create {
   name: String
   img: String
   age: Int
+  place: Int
+  rating: String
+  votes: String
+  views: Int
+  genre: String
+  type: String
+  year: Int
+  status: String
+  studio: String
+  series: Int
 }
 
 type productsType {
@@ -9,6 +19,16 @@ type productsType {
   name: String
   img: String
   age: Int
+  place: Int
+  rating: String
+  votes: String
+  views: Int
+  genre: String
+  type: String
+  year: Int
+  status: String
+  studio: String
+  series: Int
 }
 
 type Query {
@@ -17,4 +37,5 @@ type Query {
 
 type Mutation {
   createProduct(input: create): productsType
+  deleteProduct(id: ID!): productsType
 }

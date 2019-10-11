@@ -9,6 +9,7 @@ import s from './sideBar.module.scss';
  */
 export const SideBar = () => (
     <div className={s.container}>
-        <LinkButton path="/admin/products">Products</LinkButton>
+        <LinkButton path="/admin/createProducts">Create</LinkButton>
+        <LinkButton path="/admin/listProducts">Products</LinkButton>
     </div>
 );
