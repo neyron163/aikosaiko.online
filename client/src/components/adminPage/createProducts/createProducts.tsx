@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
 import TextField from '@material-ui/core/TextField';
 import {makeStyles} from '@material-ui/core/styles';
+import {compose} from 'recompose';
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -23,12 +24,32 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+export const GET_PRODUCTS = gql`
+    query data {
+        products {
+            id
+            name
+            age
+        }
+    }
+`;
+
 export const SET_PRODUCTS = gql`
     mutation($input: create) {
         createProduct(input: $input) {
             name
             img
             age
+            place
+            rating
+            votes
+            views
+            genre
+            type
+            year
+            status
+            studio
+            series
         }
     }
 `;
@@ -36,7 +57,7 @@ export const SET_PRODUCTS = gql`
 /**
  * Products component
  */
-export const Products = ({mutate}: any) => {
+export const CreateProducts = ({mutate, data: {refetch}}: any) => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
         name: '',
@@ -51,7 +72,6 @@ export const Products = ({mutate}: any) => {
     const handleChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
         setValues({...values, [name]: event.target.value});
     };
-
     /**
      * sendData
      */
@@ -66,14 +86,13 @@ export const Products = ({mutate}: any) => {
                     img,
                 },
             },
-        });
+        }).then(refetch);
         setValues({
             name: '',
             age: '',
             img: '',
         });
     };
-
     return (
         <form onSubmit={event => sendData(event)}>
             <TextField
@@ -105,4 +124,7 @@ export const Products = ({mutate}: any) => {
     );
 };
 
-export const ProductsQuery = graphql(SET_PRODUCTS)(Products);
+export const CreateProductsQuery = compose(
+    graphql(SET_PRODUCTS),
+    graphql(GET_PRODUCTS),
+)(CreateProducts);
