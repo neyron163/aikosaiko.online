@@ -4,5 +4,6 @@
     .container {
         display: flex;
         background-color: var(--color-alabaster);
+        min-height: 100vh;
     }
 }

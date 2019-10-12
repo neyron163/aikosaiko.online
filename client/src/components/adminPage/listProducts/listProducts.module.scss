@@ -1,5 +1,6 @@
 :local {
-    .row {
-        display: flex;
+    .container {
+        width: calc(100% - 200px);
+        margin-top: 20px;
     }
 }

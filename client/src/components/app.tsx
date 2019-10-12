@@ -16,11 +16,17 @@ export const App: React.FC = () => (
             <Route exact path="/">
                 <ProductsQuery />
             </Route>
+            <Route exact path="/news">
+                news
+            </Route>
+            <Route exact path="/charity">
+                charity
+            </Route>
             <Route>
                 <PageNotFoundWithRouter />
             </Route>
         </Switch>
-        <Route exact path="/admin">
+        <Route path="/admin">
             <AdminPage />
         </Route>
     </Router>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import {SideBar} from './sideBar/sideBar';
 import {CreateProductsQuery} from './createProducts/createProducts';
@@ -14,12 +14,14 @@ export const AdminPage = () => (
     <div className={s.container}>
         <Router>
             <SideBar />
-            <Route path="/admin/listProducts">
-                <ListProductsQuery />
-            </Route>
-            <Route path="/admin/createProducts">
-                <CreateProductsQuery />
-            </Route>
+            <Switch>
+                <Route path="/admin/listProducts">
+                    <ListProductsQuery />
+                </Route>
+                <Route path="/admin/createProducts">
+                    <CreateProductsQuery />
+                </Route>
+            </Switch>
         </Router>
     </div>
 );

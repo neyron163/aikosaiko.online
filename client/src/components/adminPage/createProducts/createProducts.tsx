@@ -1,69 +1,34 @@
-import React from 'react';
-// import {useQuery} from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import React, {useState} from 'react';
 import {graphql} from 'react-apollo';
 import TextField from '@material-ui/core/TextField';
-import {makeStyles} from '@material-ui/core/styles';
 import {compose} from 'recompose';
+import SaveIcon from '@material-ui/icons/Save';
+import {TEXT_FILEDS} from 'constants/admin';
+import Button from '@material-ui/core/Button';
+import {GET_PRODUCTS, SET_PRODUCTS, UPLOAD_FILE} from './query';
 
-const useStyles = makeStyles(theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 200,
-    },
-    dense: {
-        marginTop: 19,
-    },
-    menu: {
-        width: 200,
-    },
-}));
-
-export const GET_PRODUCTS = gql`
-    query data {
-        products {
-            id
-            name
-            age
-        }
-    }
-`;
-
-export const SET_PRODUCTS = gql`
-    mutation($input: create) {
-        createProduct(input: $input) {
-            name
-            img
-            age
-            place
-            rating
-            votes
-            views
-            genre
-            type
-            year
-            status
-            studio
-            series
-        }
-    }
-`;
+import s from './createProducts.module.scss';
 
 /**
  * Products component
  */
 export const CreateProducts = ({mutate, data: {refetch}}: any) => {
-    const classes = useStyles();
-    const [values, setValues] = React.useState({
+    const [values, setValues] = useState({
         name: '',
         age: '',
         img: '',
+        place: '',
+        rating: '',
+        votes: '',
+        views: '',
+        genre: '',
+        type: '',
+        year: '',
+        status: '',
+        studio: '',
+        series: '',
     });
+    // const [file, setFile] = useState(new FormData());
 
     /**
      * handleChange
@@ -72,54 +37,124 @@ export const CreateProducts = ({mutate, data: {refetch}}: any) => {
     const handleChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
         setValues({...values, [name]: event.target.value});
     };
+
+    const onChange = ({target: {validity, files: [file]}}: any) => {
+        // const formData = new FormData();
+        // if (e.target.files) formData.append('image', e.target.files[0]);
+        // mutate({ variables: { file: formData } })
+        // const {target} = e;
+        // console.log(file,  ' file');
+        // validity.valid && mutate({ variables: { file } })
+        const reader = new FileReader();
+        reader.onload = ({target: {result}}: any) => {
+            console.log(result);
+            mutate({
+                variables: {
+                    file: {
+                        filename: 'name',
+                        encoding: result,
+                    }
+                }
+            })
+        };
+
+        reader.readAsDataURL(file);
+    };
     /**
      * sendData
      */
     const sendData = (event: any) => {
         event.preventDefault();
-        const {name, age, img} = values;
+        const {
+            name,
+            age,
+            img,
+            place,
+            rating,
+            votes,
+            views,
+            genre,
+            type,
+            year,
+            status,
+            studio,
+            series,
+        } = values;
         mutate({
             variables: {
                 input: {
                     name,
                     age: Number(age),
                     img,
+                    place: Number(place),
+                    rating,
+                    votes,
+                    views: Number(views),
+                    genre,
+                    type,
+                    year: Number(year),
+                    status,
+                    studio,
+                    series: Number(series),
                 },
             },
         }).then(refetch);
-        setValues({
-            name: '',
-            age: '',
-            img: '',
-        });
+
+        // setValues({
+        //     name: '',
+        //     age: '',
+        //     img: '',
+        //     place: '',
+        //     rating: '',
+        //     votes: '',
+        //     views: '',
+        //     genre: '',
+        //     type: '',
+        //     year: '',
+        //     status: '',
+        //     studio: '',
+        //     series: '',
+        // });
     };
     return (
-        <form onSubmit={event => sendData(event)}>
-            <TextField
-                id="standard-name"
-                label="Name"
-                className={classes.textField}
-                value={values.name}
-                onChange={handleChange('name')}
-                margin="normal"
+        <form onSubmit={sendData} className={s.createProducts}>
+            <div className={s.container}>
+                {TEXT_FILEDS.map(({name, type, label, required}) => (
+                    <TextField
+                        id={`standard-${name}`}
+                        required={required}
+                        label={label}
+                        className={s.textField}
+                        value={(values as any)[name]}
+                        type={type}
+                        onChange={handleChange(name)}
+                        margin="normal"
+                    />
+                ))}
+            </div>
+            <input
+                onChange={onChange}
+                required
+                accept="image/*"
+                className={s.input}
+                id="contained-button-file"
+                type="file"
             />
-            <TextField
-                id="standard-name"
-                label="Age"
-                className={classes.textField}
-                value={values.age}
-                onChange={handleChange('age')}
-                margin="normal"
-            />
-            <TextField
-                id="standard-name"
-                label="Img"
-                className={classes.textField}
-                value={values.img}
-                onChange={handleChange('img')}
-                margin="normal"
-            />
-            <button type="submit">send</button>
+            <label htmlFor="contained-button-file">
+                <Button variant="contained" component="span">
+                    Upload
+                </Button>
+            </label>
+            {/* <img src={file} /> */}
+            <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                color="primary"
+                startIcon={<SaveIcon />}
+            >
+                Save
+            </Button>
         </form>
     );
 };
@@ -127,4 +162,5 @@ export const CreateProducts = ({mutate, data: {refetch}}: any) => {
 export const CreateProductsQuery = compose(
     graphql(SET_PRODUCTS),
     graphql(GET_PRODUCTS),
+    graphql(UPLOAD_FILE),
 )(CreateProducts);

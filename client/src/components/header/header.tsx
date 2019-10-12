@@ -2,12 +2,13 @@ import React from 'react';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 
 import {LinkButton} from 'components/linkButton/linkButton';
+import {ADMIN} from 'constants/pathNames';
+import {Header as AdminHeader} from 'components/adminPage/header/header';
 
 import white from './images/white.jpg';
 import dark from './images/dark.jpg';
 import {menu} from './nav';
 
-import {ADMIN} from 'constants/pathNames';
 
 import s from './header.module.scss';
 
@@ -24,7 +25,7 @@ interface NavType {
  * @param {Header} - props
  */
 export const Header: React.FC<PropsType> = ({night = false, location}) => {
-    if (location.pathname.slice(0, 6) === ADMIN) return null;
+    if (location.pathname.slice(0, 6) === ADMIN) return <AdminHeader />;
     return (
         <header className={s.header}>
             <img className={s.img} src={night ? dark : white} alt="header" />

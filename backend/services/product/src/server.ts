@@ -4,7 +4,9 @@ import cors from "cors";
 import express from "express";
 import depthLimit from "graphql-depth-limit";
 import { createServer } from "http";
+import bodyParser from 'body-parser';
 import schema from "./schema";
+import path from 'path';
 
 const app = express();
 const server = new ApolloServer({
@@ -12,6 +14,8 @@ const server = new ApolloServer({
   validationRules: [depthLimit(7)]
 });
 app.use("*", cors());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json({limit: '10mb'}));
 app.use(compression());
 server.applyMiddleware({ app, path: "/graphql" });
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 // import {useQuery} from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
@@ -11,6 +11,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import DeleteIcon from '@material-ui/icons/Delete';
+import {LinkButton} from 'components/linkButton/linkButton';
 
 import s from './listProducts.module.scss';
 
@@ -62,30 +63,33 @@ export const ListProducts: React.FC<PropsType> = ({
         }).then(refetch);
     };
     return (
-        <Paper>
-            <Table stickyHeader>
-                <TableHead>
-                    <TableRow hover role="checkbox" tabIndex={-1}>
-                        {['Имя', 'Год', 'Рейтинг', 'Тип'].map(element => (
-                            <TableCell key={element}>{element}</TableCell>
-                        ))}
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {products.map(({id, name, age, rating, type}: any) => (
-                        <TableRow hover role="checkbox" tabIndex={-1} key={id}>
-                            <TableCell key={name}>{name}</TableCell>
-                            <TableCell key={age}>{age}</TableCell>
-                            <TableCell key={rating}>{rating}</TableCell>
-                            <TableCell key={type}>{type}</TableCell>
-                            <TableCell>
-                                <DeleteIcon onClick={() => deleteProduct(id)} />
-                            </TableCell>
+        <div className={s.container}>
+            <LinkButton path="/admin/createProducts" icon="fa fa-plus-circle">Create</LinkButton>
+            <Paper className={s.container}>
+                <Table stickyHeader>
+                    <TableHead>
+                        <TableRow hover role="checkbox" tabIndex={-1}>
+                            {['Имя', 'Год', 'Рейтинг', 'Тип'].map(element => (
+                                <TableCell key={element}>{element}</TableCell>
+                            ))}
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </Paper>
+                    </TableHead>
+                    <TableBody>
+                        {products.map(({id, name, age, rating, type}: any) => (
+                            <TableRow hover role="checkbox" tabIndex={-1} key={id}>
+                                <TableCell key={name}>{name}</TableCell>
+                                <TableCell key={age}>{age}</TableCell>
+                                <TableCell key={rating}>{rating}</TableCell>
+                                <TableCell key={type}>{type}</TableCell>
+                                <TableCell>
+                                    <DeleteIcon onClick={() => deleteProduct(id)} />
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </Paper>
+        </div>
     );
 };
 

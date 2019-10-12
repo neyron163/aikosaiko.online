@@ -1,0 +1,22 @@
+:local {
+    .createProducts {
+        width: calc(100% - 200px);
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .textField{
+        width: calc(50% - 50px);
+
+        &:nth-child(2n) {
+            margin-left: 100px;
+        }
+    }
+
+    .input {
+        display: none;
+    }
+}

@@ -1,0 +1,32 @@
+@import '../../styleguide//variables.scss';
+
+:local {
+    .container {
+        height: 48px;
+        background: var(--color-bay-of-many);
+    }
+
+    .logo {
+        font-size: 20px;
+        color: var(--color-white);
+        font-weight: 700;
+    }
+
+    .button {
+        color: var(--color-white); 
+    }
+
+    .flex {
+        display: flex;
+        max-width: 1440px;
+        margin: 0 auto;
+        height: 100%;
+    }
+
+    .leftSide, .rightSide {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
