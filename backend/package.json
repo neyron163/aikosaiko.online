@@ -4,8 +4,8 @@
   "description": "NodeJS Apollo server with Typescript, express and GraphQL",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon 'dist/server.js'",
-    "build": "rm -rf dist && tsc -p . && ncp src/schema dist/schema",
+    "start": "node 'dist/server.js'",
+    "build": "rm -rf dist && tsc -p .",
     "start:dev": "npm run build:dev",
     "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql",
     "lint": "yarn tslint -c tslint.json 'src/**/*.ts'",
@@ -39,7 +39,9 @@
   "dependencies": {
     "@types/isomorphic-fetch": "^0.0.35",
     "@types/qs-middleware": "^1.0.1",
+    "apollo-link-error": "^1.1.12",
     "apollo-link-http": "^1.5.16",
+    "apollo-link-retry": "^2.2.15",
     "apollo-server-express": "^2.9.4",
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
@@ -53,6 +55,7 @@
     "mocha": "^6.2.0",
     "ncp": "^2.0.0",
     "node-fetch": "^2.6.0",
+    "pm2": "^4.0.1",
     "prettier": "^1.18.2",
     "qs-middleware": "^1.0.3",
     "tslint": "^5.20.0",
