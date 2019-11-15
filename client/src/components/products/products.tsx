@@ -2,6 +2,7 @@ import React from 'react';
 // import {useQuery} from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
+import {microService} from 'config';
 
 import s from './products.module.scss';
 
@@ -40,7 +41,7 @@ export const Products: React.FC<PropsType> = ({data}) => {
                 {products.map(({id, name, img}: ProductsType) => (
                     <div className={s.item} key={id}>
                         <figure className={s.itemFigure}>
-                            <img src={img} alt="image" />
+                            <img src={`${microService}/images/${img}`} alt="image" />
 
                             <figcaption className={s.itemDescription}>
                                 <div className={s.itemTopLine}>

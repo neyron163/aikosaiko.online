@@ -39,6 +39,7 @@
   "dependencies": {
     "@types/pg": "^7.11.2",
     "@types/sequelize": "^4.28.5",
+    "@types/uuid": "^3.4.6",
     "apollo-server-express": "^2.9.3",
     "chai": "^4.2.0",
     "compression": "^1.7.4",
@@ -54,6 +55,7 @@
     "sequelize": "^5.19.1",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-jsdoc-rules": "^0.2.0"
+    "tslint-jsdoc-rules": "^0.2.0",
+    "uuid": "^3.3.3"
   }
 }

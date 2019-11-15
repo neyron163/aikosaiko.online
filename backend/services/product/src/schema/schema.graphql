@@ -1,5 +1,3 @@
-scalar Upload
-
 input create {
   name: String
   img: String
@@ -33,19 +31,11 @@ type productsType {
   series: Int
 }
 
-type File {
-  filename: String!
-  mimetype: String!
-  encoding: String!
-}
-
 type Query {
-  uploads: [File]
   products: [productsType!]!
 }
 
 type Mutation {
   createProduct(input: create): productsType
   deleteProduct(id: ID!): productsType
-  singleUpload(file: Upload!): File!
 }

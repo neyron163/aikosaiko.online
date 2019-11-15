@@ -5,7 +5,7 @@ import {compose} from 'recompose';
 import SaveIcon from '@material-ui/icons/Save';
 import {TEXT_FILEDS} from 'constants/admin';
 import Button from '@material-ui/core/Button';
-import {GET_PRODUCTS, SET_PRODUCTS, UPLOAD_FILE} from './query';
+import {GET_PRODUCTS, SET_PRODUCTS} from './query';
 
 import s from './createProducts.module.scss';
 
@@ -13,6 +13,7 @@ import s from './createProducts.module.scss';
  * Products component
  */
 export const CreateProducts = ({mutate, data: {refetch}}: any) => {
+    const [file, setFile] = useState('');
     const [values, setValues] = useState({
         name: '',
         age: '',
@@ -38,24 +39,14 @@ export const CreateProducts = ({mutate, data: {refetch}}: any) => {
         setValues({...values, [name]: event.target.value});
     };
 
-    const onChange = ({target: {validity, files: [file]}}: any) => {
-        // const formData = new FormData();
-        // if (e.target.files) formData.append('image', e.target.files[0]);
-        // mutate({ variables: { file: formData } })
-        // const {target} = e;
-        // console.log(file,  ' file');
-        // validity.valid && mutate({ variables: { file } })
+    const onChange = ({
+        target: {
+            files: [file],
+        },
+    }: any) => {
         const reader = new FileReader();
         reader.onload = ({target: {result}}: any) => {
-            console.log(result);
-            mutate({
-                variables: {
-                    file: {
-                        filename: 'name',
-                        encoding: result,
-                    }
-                }
-            })
+            setFile(result);
         };
 
         reader.readAsDataURL(file);
@@ -68,7 +59,6 @@ export const CreateProducts = ({mutate, data: {refetch}}: any) => {
         const {
             name,
             age,
-            img,
             place,
             rating,
             votes,
@@ -80,12 +70,13 @@ export const CreateProducts = ({mutate, data: {refetch}}: any) => {
             studio,
             series,
         } = values;
+
         mutate({
             variables: {
                 input: {
                     name,
                     age: Number(age),
-                    img,
+                    img: file,
                     place: Number(place),
                     rating,
                     votes,
@@ -117,12 +108,12 @@ export const CreateProducts = ({mutate, data: {refetch}}: any) => {
         // });
     };
     return (
-        <form onSubmit={sendData} className={s.createProducts}>
+        <form onSubmit={sendData} className={s.createProducts} name="sendData">
             <div className={s.container}>
                 {TEXT_FILEDS.map(({name, type, label, required}) => (
                     <TextField
                         id={`standard-${name}`}
-                        required={required}
+                        // required={required}
                         label={label}
                         className={s.textField}
                         value={(values as any)[name]}
@@ -134,7 +125,7 @@ export const CreateProducts = ({mutate, data: {refetch}}: any) => {
             </div>
             <input
                 onChange={onChange}
-                required
+                // required
                 accept="image/*"
                 className={s.input}
                 id="contained-button-file"
@@ -145,7 +136,7 @@ export const CreateProducts = ({mutate, data: {refetch}}: any) => {
                     Upload
                 </Button>
             </label>
-            {/* <img src={file} /> */}
+            <img src={file} />
             <Button
                 type="submit"
                 variant="contained"
@@ -162,5 +153,4 @@ export const CreateProducts = ({mutate, data: {refetch}}: any) => {
 export const CreateProductsQuery = compose(
     graphql(SET_PRODUCTS),
     graphql(GET_PRODUCTS),
-    graphql(UPLOAD_FILE),
 )(CreateProducts);

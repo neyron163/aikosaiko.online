@@ -29,11 +29,3 @@ export const SET_PRODUCTS = gql`
         }
     }
 `;
-
-export const UPLOAD_FILE = gql`
-  mutation singleUpload($file: Upload!) {
-    singleUpload(file: $file) {
-      filename
-    }
-  }
-`;
