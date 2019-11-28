@@ -2,7 +2,7 @@ import React from 'react';
 // import {useQuery} from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
-import {microService} from 'config';
+import {API_URL} from 'config';
 
 import s from './products.module.scss';
 
@@ -29,10 +29,32 @@ interface PropsType {
     };
 }
 
+const data = {
+    products: [
+        {
+            id: 1,
+            name: 'Хвост Феи ТВ-1',
+            img: 'https://yummyanime.club/img/posters/1570976911.jpg',
+            age: 13,
+            place: 1,
+            rating: '9.06',
+            votes: '24907',
+            views: '10 0000',
+            genre: ['Сёнэн', 'Комедия', 'Приключения', 'Фэнтези', 'Драконы', 'Магия', 'Экшен'],
+            type: 'Сериал',
+            year: 2009,
+            status: 'онгоинг',
+            studio: ['A-1 Pictures', 'Satelight'],
+            series: 175,
+        },
+    ],
+    loading: false,
+};
 /**
  * Products component
  */
-export const Products: React.FC<PropsType> = ({data}) => {
+// export const Products: React.FC<PropsType> = ({data}) => {
+export const Products = () => {
     const {products, loading} = data;
     if (loading) return null;
     return (
@@ -41,7 +63,7 @@ export const Products: React.FC<PropsType> = ({data}) => {
                 {products.map(({id, name, img}: ProductsType) => (
                     <div className={s.item} key={id}>
                         <figure className={s.itemFigure}>
-                            <img src={`${microService}/images/${img}`} alt="image" />
+                            <img src={`${API_URL}${img}`} alt={name} />
 
                             <figcaption className={s.itemDescription}>
                                 <div className={s.itemTopLine}>
@@ -62,4 +84,5 @@ export const Products: React.FC<PropsType> = ({data}) => {
     );
 };
 // @ts-ignore
-export const ProductsQuery = graphql(GET_PRODUCTS)(Products);
+// export const ProductsQuery = graphql(GET_PRODUCTS)(Products);
+export const ProductsQuery = Products;
