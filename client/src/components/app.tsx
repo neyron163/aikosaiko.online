@@ -18,13 +18,14 @@ export const App: React.FC = () => (
         <HeaderWithRouter />
         <Switch>
             <Route exact path="/">
-                <ProductsQuery data={data} />
+                <ProductsQuery />
             </Route>
             <Route
                 exact
                 path="/item/:id"
-                children={({match}: {match: any}) => (
-                    <ProductQuery data={data} id={match.params.id} />
+                children={({match}) => (
+                    // @ts-ignore
+                    <ProductQuery id={match.params.id} />
                 )}
             />
             <Route exact path="/news">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
 import {API_URL} from 'config';
@@ -6,10 +6,9 @@ import {ProductsType} from 'constants/types/products';
 
 import s from './product.module.scss';
 
-export const GET_PRODUCTS = gql`
-    query data {
-        products {
-            id
+export const SET_PRODUCT = gql`
+    mutation($id: ID!) {
+        product(id: $id) {
             name
             img
             age
@@ -38,9 +37,27 @@ interface PropsType {
 /**
  * Products component
  */
-export const Product: React.FC<PropsType> = ({data, id}) => {
-    const {product, loading} = data!;
-    if (loading) return null;
+export const Product: React.FC<any> = ({mutate, id}) => {
+    const [product, setProduct] = useState({
+        name: '',
+        img: '',
+        age: null,
+        place: '',
+        rating: '',
+        votes: '',
+        views: '',
+        type: '',
+        year: '',
+        status: '',
+        series: '',
+    });
+    useEffect(() => {
+        mutate({
+            variables: {
+                id,
+            },
+        }).then(({data: {product}}: any) => setProduct(product));
+    }, []);
 
     const {
         name,
@@ -50,11 +67,9 @@ export const Product: React.FC<PropsType> = ({data, id}) => {
         rating,
         votes,
         views,
-        genre,
         type,
         year,
         status,
-        studio,
         series,
     } = product;
 
@@ -71,17 +86,15 @@ export const Product: React.FC<PropsType> = ({data, id}) => {
                     <div>{rating}</div>
                     <div>{votes}</div>
                     <div>{views}</div>
-                    <div>{genre.map(el => el)}</div>
                     <div>{type}</div>
                     <div>{year}</div>
                     <div>{status}</div>
-                    <div>{studio.map(el => el)}</div>
                     <div>{series}</div>
                 </div>
             </div>
         </div>
     );
 };
-
-// export const ProductQuery = graphql(GET_PRODUCTS)(Product);
-export const ProductQuery = Product;
+// @ts-ignore
+export const ProductQuery = graphql(SET_PRODUCT)(Product);
+// export const ProductQuery = Product;

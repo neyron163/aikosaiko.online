@@ -31,7 +31,7 @@ interface PropsType {
 /**
  * Products component
  */
-export const Products: React.FC<PropsType> = ({data}) => {
+export const Products: React.FC<any> = ({data}) => {
     const {products, loading} = data!;
     if (loading) return null;
 
@@ -39,8 +39,8 @@ export const Products: React.FC<PropsType> = ({data}) => {
         <div className={s.wrapper}>
             <div className={s.itemBox}>
                 {products.map(({id, name, img, views, rating, votes, place}: ProductsType) => (
-                    <Link to={`/item/${id}`}>
-                        <figure className={s.item} key={id}>
+                    <Link to={`/item/${id}`} key={id}>
+                        <figure className={s.item}>
                             <img src={`${API_URL}${img}`} alt={name} />
 
                             <figcaption className={s.itemDescription}>
@@ -62,5 +62,5 @@ export const Products: React.FC<PropsType> = ({data}) => {
     );
 };
 
-// export const ProductsQuery = graphql(GET_PRODUCTS)(Products);
-export const ProductsQuery = Products;
+export const ProductsQuery = graphql(GET_PRODUCTS)(Products);
+// export const ProductsQuery = Products;

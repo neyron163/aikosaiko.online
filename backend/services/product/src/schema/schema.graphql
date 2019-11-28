@@ -38,4 +38,5 @@ type Query {
 type Mutation {
   createProduct(input: create): productsType
   deleteProduct(id: ID!): productsType
+  product(id: ID!): productsType
 }
