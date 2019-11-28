@@ -5,6 +5,10 @@ import {ProductsQuery} from './products/products';
 import {HeaderWithRouter} from './header/header';
 import {PageNotFoundWithRouter} from './pageNotFound/pageNotFound';
 import {AdminPage} from './adminPage/adminPage';
+import {ProductQuery} from './product/product';
+
+// TODO sample data
+import {data} from 'components/data';
 
 /**
  * The main App component
@@ -14,8 +18,15 @@ export const App: React.FC = () => (
         <HeaderWithRouter />
         <Switch>
             <Route exact path="/">
-                <ProductsQuery />
+                <ProductsQuery data={data} />
             </Route>
+            <Route
+                exact
+                path="/item/:id"
+                children={({match}: {match: any}) => (
+                    <ProductQuery data={data} id={match.params.id} />
+                )}
+            />
             <Route exact path="/news">
                 news
             </Route>
