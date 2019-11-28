@@ -1,50 +1,51 @@
 :local {
-    img {
-        max-width: 100%;
-        width: 100%;
-        height: auto;
-    }
-
     .wrapper {
         display: flex;
         justify-content: space-between;
-        width: 1440px;
         padding: 50px 0;
         font-family: "Roboto", sans-serif;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .leftBar {
         flex: 0 1 300px;
         height: 400px;
         margin: 0 10px;
-        background: #e2e2e2; // look at file with vars
+        background: #e2e2e2;
         border-radius: 5px;
         box-shadow: 1px 0 10px 0 rgb(71, 61, 61);
     }
 
     .itemBox {
         display: flex;
-        flex-flow: row wrap;
-        flex: 0 1 960px;
-        margin: 0 auto;
+        flex-wrap: wrap;
     }
 
     .item {
-        flex: 0 1 calc(32.33% - 20px);
+        max-width: 280px;
         box-sizing: border-box;
-        margin: 0 10px 10px;
+        margin: 0 20px 30px 0;
         background: #e2e2e2;
         border-radius: 5px;
         box-shadow: 1px 0 10px 0 rgb(71, 61, 61);
         background-color: #242525;
-    }
+        cursor: pointer;
+        transition: .3s transform;
 
-    .itemFigure {
-        position: relative;
-        display: flex;
-        flex-flow: row wrap;
-        height: 100%;
-        min-width: 280px;
+        &:nth-child(4n) {
+            margin-right: 0;
+        }
+
+        &:hover {
+            transform: translateY(-10px);
+        }
+
+        img {
+            min-width: 280px;
+            min-height: 396px;
+        }
     }
 
     .itemDescription {
@@ -52,38 +53,30 @@
         width: 100%;
         color: white;
         box-sizing: border-box;
-        padding: 10px 20px;
-    }
-
-    .itemTopLine {
-        display: flex;
-        flex-flow: row wrap;
-        align-items: flex-start;
-        padding-top: 10px;
+        padding: 20px;
     }
 
     .itemNum {
         background: #4b8257;
-        flex: 1 1 40px;
-        border-radius: calc(35% + 2px);
+        width: 30px;
+        border-radius: 10px;
         padding: 0 3px;
         text-align: center;
+        margin-right: 20px;
     }
 
-    .itemName {
-        padding: 0 10px;
-        flex: 2 1 50%;
+    .top {
+        display: flex;
+        align-items: center;
         text-transform: uppercase;
     }
 
     .views {
-        flex: 1 0 100%;
         text-align: center;
-        padding: 10px 0;
+        padding: 15px 0;
     }
 
     .itemFooter {
-        flex: 1 0 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
