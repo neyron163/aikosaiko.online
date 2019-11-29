@@ -1,0 +1,67 @@
+:local {
+    .item {
+        max-width: 280px;
+        box-sizing: border-box;
+        margin: 0 26px 30px 0;
+        background: #e2e2e2;
+        border-radius: 5px;
+        box-shadow: 1px 0 10px 0 rgb(71, 61, 61);
+        background-color: #242525;
+        cursor: pointer;
+        transition: .3s transform;
+
+        &:nth-child(4n) {
+            margin-right: 0;
+        }
+
+        &:hover {
+            transform: translateY(-10px);
+        }
+
+        img {
+            min-width: 280px;
+            min-height: 396px;
+        }
+    }
+
+    .itemDescription {
+        border-radius: 0 0 5px 5px;
+        width: 100%;
+        color: white;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    .itemNum {
+        background: #4b8257;
+        width: 30px;
+        border-radius: 10px;
+        padding: 0 3px;
+        text-align: center;
+        margin-right: 20px;
+    }
+
+    .top {
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+    }
+
+    .views {
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    .itemFooter {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .rating {
+        min-width: 20px;
+        padding: 2px 10px;
+        background-color: #c6a852;
+        border-radius: 4px;
+    }
+}

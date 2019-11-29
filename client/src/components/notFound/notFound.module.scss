@@ -1,0 +1,10 @@
+@import '../styleguide/variables.scss';
+
+:local {
+    .notFound {
+        max-width: 1200px;
+        margin: 20px auto 20px;
+        background: var(--color-white);
+        padding: 10px;
+    }
+}

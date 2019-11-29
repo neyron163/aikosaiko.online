@@ -41,7 +41,6 @@ const resolverMap: IResolvers = {
       return content.findByPk(id).then((el: any) => el.destroy());
     },
     product({}, {id}) {
-      console.log(id)
       return content.findByPk(id);
     }
   }

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
 import {API_URL} from 'config';
 import {BrowserRouter as Router, Link} from 'react-router-dom';
 import {ProductsType} from 'constants/types/products';
+import {Search} from 'components/search/search';
+import {ProductItem} from 'components/productItem/productItem';
+import {NotFound} from 'components/notFound/notFound';
 
 import s from './products.module.scss';
 
@@ -31,36 +34,56 @@ interface PropsType {
 /**
  * Products component
  */
-export const Products: React.FC<any> = ({data}) => {
+export const Products: React.FC<PropsType> = ({data}) => {
+    const [value, setValue] = useState('');
     const {products, loading} = data!;
     if (loading) return null;
 
-    return (
-        <div className={s.wrapper}>
-            <div className={s.itemBox}>
-                {products.map(({id, name, img, views, rating, votes, place}: ProductsType) => (
-                    <Link to={`/item/${id}`} key={id}>
-                        <figure className={s.item}>
-                            <img src={`${API_URL}${img}`} alt={name} />
+    const filtered = products.filter(
+        ({name}: {name: string}) => !name.indexOf(value.toLowerCase()),
+    );
+    const isResult = Boolean(value && !filtered.length);
 
-                            <figcaption className={s.itemDescription}>
-                                <div className={s.top}>
-                                    <span className={s.itemNum}>{`# ${place}`}</span>
-                                    <p className={s.itemName}>{name}</p>
-                                </div>
-                                <p className={s.views}>Просмотров: {views}</p>
-                                <footer className={s.itemFooter}>
-                                    <p className={s.rating}>{rating}</p>
-                                    <p className={s.votes}>({votes} голосов)</p>
-                                </footer>
-                            </figcaption>
-                        </figure>
-                    </Link>
-                ))}
+    return (
+        <>
+            {isResult && <NotFound />}
+            <Search render={(value: string) => setValue(value)} />
+            {isResult && 'Возможно вам будет интерестно это'}
+            <div className={s.wrapper}>
+                <div className={s.itemBox}>
+                    {filtered.length
+                        ? filtered.map(
+                              ({id, name, img, views, rating, votes, place}: ProductsType) => (
+                                  <ProductItem
+                                      key={id}
+                                      id={id}
+                                      name={name}
+                                      img={img}
+                                      views={views}
+                                      rating={rating}
+                                      votes={votes}
+                                      place={place}
+                                  />
+                              ),
+                          )
+                        : products.map(
+                              ({id, name, img, views, rating, votes, place}: ProductsType) => (
+                                  <ProductItem
+                                      key={id}
+                                      id={id}
+                                      name={name}
+                                      img={img}
+                                      views={views}
+                                      rating={rating}
+                                      votes={votes}
+                                      place={place}
+                                  />
+                              ),
+                          )}
+                </div>
             </div>
-        </div>
+        </>
     );
 };
-
+// @ts-ignore
 export const ProductsQuery = graphql(GET_PRODUCTS)(Products);
-// export const ProductsQuery = Products;
