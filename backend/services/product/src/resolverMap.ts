@@ -9,7 +9,7 @@ import path from "path";
 const resolverMap: IResolvers = {
   Query: {
     products(_: void, args: void, ctx: Context, info: GraphQLResolveInfo) {
-      return content.findAll();
+      return content.findAll({ limit: 50 });
     }
   },
   Mutation: {
@@ -42,6 +42,9 @@ const resolverMap: IResolvers = {
     },
     product({}, {id}) {
       return content.findByPk(id);
+    },
+    products({}, {count}) {
+      return content.findAll({ limit: 50 + count });
     }
   }
 };
