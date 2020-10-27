@@ -3999,9 +3999,9 @@ symbol-observable@^1.0.4:
   integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
 
 systeminformation@^4.14.11:
-  version "4.14.12"
-  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-4.14.12.tgz#e63d7e2cd6c3117bbd6c9e4c3b9e667ef267b65d"
-  integrity sha512-KmHOx72a36qETESEH+LTUVGL4e31+jeZqSd1Th1EkNpjrWohBKGNVYEA9ygo0nccqF+6mi0wuDmKh+Un+dKOmg==
+  version "4.27.11"
+  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-4.27.11.tgz#6dbe96e48091444f80dab6c05ee1901286826b60"
+  integrity sha512-U7bigXbOnsB8k1vNHS0Y13RCsRz5/UohiUmND+3mMUL6vfzrpbe/h4ZqewowB+B+tJNnmGFDj08Z8xGfYo45dQ==
 
 tar@^4:
   version "4.4.10"
